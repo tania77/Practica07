@@ -46,4 +46,13 @@ describe Biblioteca do
            @n1.siguiente.should eq nil 
         end
     end
+    
+    context Lista do
+       before :each do
+          @lista1 = Lista.new(nil) 
+       end
+       it "debe haber un head" do 
+           @lista1.head.should eq nil
+       end
+    end
 end
