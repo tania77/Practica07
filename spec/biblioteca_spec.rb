@@ -7,10 +7,19 @@ describe Biblioteca do
         version = "0.1.0"
     end
     
+    before :all do
+        @l1 = Libro.new("titulo", "autor",  "serie", "editorial", "nedicion", "fecha", "isbn10", "isbn13")
+    end
+    before :all do 
+       @n1 = Nodo.new(@l1, nil) 
+    end
+    before :all do 
+       @lista1 = Lista.new(nil) 
+    end
     context Libro do
-        before :each do
-            @l1 = Libro.new("titulo", "autor",  "serie", "editorial", "nedicion", "fecha", "isbn10", "isbn13")
-        end
+#        before :each do
+#            @l1 = Libro.new("titulo", "autor",  "serie", "editorial", "nedicion", "fecha", "isbn10", "isbn13")
+#        end
 
         it "debe existir un titulo" do
             @l1.titulo.should eq("titulo")
@@ -36,9 +45,9 @@ describe Biblioteca do
     end
     
     context Nodo do
-        before :each do
-            @n1 = Nodo.new(@l1, nil)
-        end
+#        before :each do
+#            @n1 = Nodo.new(@l1, nil)
+#        end
         it "debe tener un libro" do
             @n1.libro.should_not eq nil
         end
@@ -48,14 +57,15 @@ describe Biblioteca do
     end
     
     context Lista do
-       before :each do
-          @lista1 = Lista.new(nil) 
-       end
+#       before :each do
+#          @lista1 = Lista.new(nil) 
+#       end
        it "debe haber un head" do 
            @lista1.head.should eq nil
        end
        it "Se inserta correctamente un nodo" do 
-          @lista1.insert.should_not eq nil 
+          @lista1.insert(@n1)
+          @lista1.head.should_not eq nil 
        end
     end
 end
