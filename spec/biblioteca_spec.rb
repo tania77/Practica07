@@ -54,5 +54,8 @@ describe Biblioteca do
        it "debe haber un head" do 
            @lista1.head.should eq nil
        end
+       it "Se inserta correctamente un nodo" do 
+          @lista1.insert.should_not eq nil 
+       end
     end
 end
