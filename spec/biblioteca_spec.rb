@@ -34,4 +34,13 @@ describe Biblioteca do
             @l1.isbn13.should eq("isbn13")
         end
     end
+    
+    context Nodo do
+        before :each do
+            @n1 = Nodo.new(@l1)
+        end
+        it "debe tener un libro" do
+            @n1.libro.should_not eq nil
+        end
+    end
 end
