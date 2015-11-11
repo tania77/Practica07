@@ -37,10 +37,13 @@ describe Biblioteca do
     
     context Nodo do
         before :each do
-            @n1 = Nodo.new(@l1)
+            @n1 = Nodo.new(@l1, nil)
         end
         it "debe tener un libro" do
             @n1.libro.should_not eq nil
+        end
+        it "el puntero al siguiente libro debe ser nulo" do
+           @n1.siguiente.should eq nil 
         end
     end
 end
