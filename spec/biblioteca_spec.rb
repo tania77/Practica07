@@ -8,69 +8,82 @@ describe Biblioteca do
     end
     
     before :all do
-        @l1 = Libro.new("Dave Thomas, Andy Hunt, Chad Fowler.", "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’
-Guide.",nil, "(The Facets of Ruby). Pragmatic Bookshelf;", "4 edition", "(July 7, 2013).", "ISBN-13: 978-1937785499.",
-"ISBN-10: 1937785491.")
-#        @l2 = Libro.new("Scott Chacon.", "Pro Git 2009th Edition. (Pro). Apress; 2009 edition "(August 27, 2009).", "ISBN-13: 978-
-# 1430218333.", "ISBN-10: 1430218339.")
-    end
-    before :all do 
-       @n1 = Nodo.new(@l1, nil) 
-    end
-    before :all do 
-       @lista1 = Lista.new(nil) 
+        @lista = Lista.new()
+        
+       @r1 = Libro.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers Guide", "July 7, 2013", "Pragmatic Bookshelf", "4 edition", "The Facets of Ruby",["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
+       @r2 = Revista.new(["Scott Chacon"], "Pro Git 2009th Edition", "August 27, 2009", ["ISSN-13: 978-1430218333", "ISSN-10: 1430218339"])
+       @r3 = Electronico.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "February 4, 2008", "http://0596516177IS978_0596516178") 
+       
+       @n1 = Nodo.new(@r1)
+       @n2 = Nodo.new(@r2)
+       @n3 = Nodo.new(@r3)
     end
     context Libro do
-#        before :each do
-#            @l1 = Libro.new("titulo", "autor",  "serie", "editorial", "nedicion", "fecha", "isbn10", "isbn13")
-#        end
 
-        it "debe existir un titulo" do
-            @l1.titulo.should eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’
-Guide.")
+        it "Titulo" do
+            expect(@r1.titulo).to eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers Guide")
         end
-        it "debe existir al menos un autor" do
-            @l1.autor.should eq("Dave Thomas, Andy Hunt, Chad Fowler.")
+        it "Autor" do
+            expect(@r1.autor).to eq(["Dave Thomas", "Andy Hunt", "Chad Fowler"])
         end
 
-        it "debe existir o no una serie" do
-            @l1.serie.should eq nil 
+        it "Serie" do
+            expect(@r1.serie).to eq("Pragmatic Bookshelf")
         end
-        it "debe existir una editorial" do
-            @l1.editorial.should eq("(The Facets of Ruby). Pragmatic Bookshelf;") 
-            @l1.nedicion.should eq("4 edition") 
+        it "Editorial" do
+            expect(@r1.editorial).to eq("4 edition")
         end
-        it "debe existir una fecha de publicacion" do
-            @l1.fecha.should eq("(July 7, 2013).") 
+        it "Fecha" do
+            expect(@r1.fecha).to eq("July 7, 2013")
         end
-        it "debe haber almenos un numero isbn" do
-            @l1.isbn10.should eq("ISBN-10: 1937785491.")
-            @l1.isbn13.should eq("ISBN-13: 978-1937785499.")
-        end
-    end
-    
-    context Nodo do
-#        before :each do
-#            @n1 = Nodo.new(@l1, nil)
-#        end
-        it "debe tener un libro" do
-            @n1.libro.should_not eq nil
-        end
-        it "el puntero al siguiente libro debe ser nulo" do
-           @n1.siguiente.should eq nil 
+        it "Numero isbn" do
+            expect(@r1.isbn).to eq(["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
         end
     end
     
     context Lista do
-#       before :each do
-#          @lista1 = Lista.new(nil) 
-#       end
-       it "debe haber un head" do 
-           @lista1.head.should eq nil
-       end
-       it "Se inserta correctamente un nodo" do 
-          @lista1.insert(@n1)
-          @lista1.head.should_not eq nil 
-       end
+        it "La lista debe tener cabeza y cola" do
+            @lista.insert_primer_nodo(@n1)
+            expect(@lista.head).to eq(@n1)
+            expect(@lista.tail).to eq(@n1)
+        end
+        
+        it "Insertar elemento por el principio" do
+            @lista.insert_primer_nodo(@n1)
+            @lista.insert_principio(@n2)
+            expect(@lista.head).to eq(@n2)
+            expect(@n2.value).to eq(@r2)
+        end
+        
+        it "Insertar por el final" do
+            @lista.insert_primer_nodo(@n1)
+            @lista.insert_final(@n3)
+            expect(@lista.tail).to eq(@n3)
+            expect(@n3.value).to eq(@r3)
+        end
+        
+        it "Se extrae el primer elemento de la lista." do
+            @lista.insert_primer_nodo(@n1)
+            @lista.insert_principio(@n2)
+            @lista.borrar_principio
+            expect(@lista.head).to eq(@n1)
+            expect(@n1.value).to eq(@r1)
+        end
+        
+        it "Se extrae el último elemento de la lista." do
+            @lista.insert_primer_nodo(@n1)
+            @lista.insert_final(@n3)
+            @lista.borrar_final
+            expect(@lista.head).to eq(@n1)
+            expect(@n1.value).to eq(@r1)
+        end
+        
+        it "Expectativa de herencia" do
+            expect(@r2.is_a?Referencia).to eq(true)
+        end
+        
+        it "Instancia" do
+            expect(@r3.instance_of?Electronico).to eq(true)
+        end
     end
 end

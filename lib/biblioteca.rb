@@ -1,6 +1,5 @@
 require "biblioteca/version"
-require "biblioteca/libro"
-require "biblioteca/nodo"
+require "biblioteca/referencia"
 require "biblioteca/lista"
 
 module Biblioteca
