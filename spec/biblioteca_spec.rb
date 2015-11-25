@@ -97,8 +97,8 @@ describe Biblioteca do
     end
     
     context "#Pruebas para lista Enumerable" do 
-       it "algo" do 
-           
+       it "Probar el first" do 
+           expect(@lista.first).to eq()
        end 
     end
 end
