@@ -7,6 +7,12 @@ class Lista
        @tail = @head
    end
    
+   def each
+      while(@head != @tail)
+         yield
+      end
+   end
+   
    def insert_primer_nodo(item)
       nodo = Nodo.new(item,nil,nil)
       nodo.siguiente = @head
