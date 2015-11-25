@@ -95,4 +95,10 @@ describe Biblioteca do
           expect(@r1 == @r1).to eq(true) 
        end
     end
+    
+    context "#Pruebas para lista Enumerable" do 
+       it "algo" do 
+           
+       end 
+    end
 end
