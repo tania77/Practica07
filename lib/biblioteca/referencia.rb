@@ -1,6 +1,8 @@
 #require "biblioteca/version"
 
 class Referencia
+    
+    include Comparable
 	
 	attr_accessor :titulo, :autor, :fecha
 	
@@ -8,6 +10,10 @@ class Referencia
 		@titulo = titulo
 		@autor = autor
 		@fecha = fecha
+	end
+	
+	def <=> (other)
+	   @fecha <=> other.fecha 
 	end
 end
 class Libro < Referencia

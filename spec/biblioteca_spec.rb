@@ -86,4 +86,13 @@ describe Biblioteca do
             expect(@r3.instance_of?Electronico).to eq(true)
         end
     end
+    
+    context "#pruebas referencia es Comparable" do
+       it "Un libro es mayor que otro" do
+          expect(@r3 < @r2).to eq(false) 
+       end
+       it "Un libro es igual a otro" do
+          expect(@r1 == @r1).to eq(true) 
+       end
+    end
 end
