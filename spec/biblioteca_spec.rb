@@ -13,10 +13,7 @@ describe Biblioteca do
        @r1 = Libro.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers Guide", "July 7, 2013", "Pragmatic Bookshelf", "4 edition", "The Facets of Ruby",["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
        @r2 = Revista.new(["Scott Chacon"], "Pro Git 2009th Edition", "August 27, 2009", ["ISSN-13: 978-1430218333", "ISSN-10: 1430218339"])
        @r3 = Electronico.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "February 4, 2008", "http://0596516177IS978_0596516178") 
-       
-       @n1 = Nodo.new(@r1)
-       @n2 = Nodo.new(@r2)
-       @n3 = Nodo.new(@r3)
+
     end
     context Libro do
 
@@ -43,39 +40,37 @@ describe Biblioteca do
     
     context Lista do
         it "La lista debe tener cabeza y cola" do
-            @lista.insert_primer_nodo(@n1)
-            expect(@lista.head).to eq(@n1)
-            expect(@lista.tail).to eq(@n1)
+            @lista.insert_principio(@r1)
+            expect(@lista.head).to eq(@lista.tail)
+            expect(@lista.tail).to eq(@lista.head)
+            @lista.insert_principio(@r2)
         end
         
         it "Insertar elemento por el principio" do
-            @lista.insert_primer_nodo(@n1)
-            @lista.insert_principio(@n2)
-            expect(@lista.head).to eq(@n2)
-            expect(@n2.value).to eq(@r2)
+            @lista.insert_principio(@r1)
+            @lista.insert_principio(@r2)
+            expect(@lista.head.value).to eq(@r2)
+            expect(@lista.tail.value).to eq(@r1)
         end
         
         it "Insertar por el final" do
-            @lista.insert_primer_nodo(@n1)
-            @lista.insert_final(@n3)
-            expect(@lista.tail).to eq(@n3)
-            expect(@n3.value).to eq(@r3)
+            #@lista.insert_final(@r1)
+            @lista.insert_final(@r3)
+            expect(@lista.head.value).to eq(@r2)
+            expect(@lista.tail.value).to eq(@r3)
         end
         
         it "Se extrae el primer elemento de la lista." do
-            @lista.insert_primer_nodo(@n1)
-            @lista.insert_principio(@n2)
+            #@lista.insert_primer_nodo(@r1)
+            #@lista.insert_principio(@r2)
             @lista.borrar_principio
-            expect(@lista.head).to eq(@n1)
-            expect(@n1.value).to eq(@r1)
+            expect(@lista.head.value).to eq(@r1)
+            #expect(@r1.value).to eq(@r1)
         end
         
         it "Se extrae el último elemento de la lista." do
-            @lista.insert_primer_nodo(@n1)
-            @lista.insert_final(@n3)
             @lista.borrar_final
-            expect(@lista.head).to eq(@n1)
-            expect(@n1.value).to eq(@r1)
+            expect(@lista.head.value).to eq(@r1)
         end
         
         it "Expectativa de herencia" do
@@ -87,7 +82,7 @@ describe Biblioteca do
         end
     end
     
-    context "#pruebas referencia es Comparable" do
+    context "Pruebas referencia es Comparable" do
        it "Un libro es mayor que otro" do
           expect(@r3 < @r2).to eq(false) 
        end
@@ -96,9 +91,9 @@ describe Biblioteca do
        end
     end
     
-    context "#Pruebas para lista Enumerable" do 
-       it "Probar el first" do 
-           expect(@lista.first).to eq()
-       end 
-    end
+    #context "#Pruebas para lista Enumerable" do 
+    #   it "Probar el first" do 
+    #       expect(@lista.first).to eq()
+    #   end 
+    #end
 end

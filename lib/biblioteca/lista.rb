@@ -3,8 +3,8 @@ class Lista
    attr_accessor :head, :value, :siguiente, :tail, :anterior
    
    def initialize
-       @head = Nodo.new(nil)
-       @tail = @head
+       @head = nil
+       @tail = nil
    end
    
    def each
@@ -13,33 +13,37 @@ class Lista
       end
    end
    
-   def insert_primer_nodo(item)
+   def insert_principio(item)
       nodo = Nodo.new(item,nil,nil)
-      nodo.siguiente = @head
-      nodo.anterior = @tail
+      if @head != nil
+         @head.siguiente = nodo
+      end
+      nodo.anterior = @head
       @head = nodo
-      @tail = nodo
-   end
-   
-   def insert_principio(nodo)
-      nodo.siguiente = @head
-      @head.anterior = nodo
-      @head = nodo
+      if @tail == nil
+         @tail = nodo
+      end
    end
    
    def borrar_principio
-      @head = @head.siguiente
-      @head.anterior = nil
+      @head = @head.anterior
+      @head.siguiente = nil
    end
    
    def borrar_final
-      @tail = @tail.anterior
-      @tail.siguiente = nil
+      @tail = @tail.siguiente
+      @tail.anterior = nil
    end
    
-   def insert_final(nodo)
-      nodo.anterior = @tail
-      @tail.siguiente = nodo
+   def insert_final(item)
+      nodo = Nodo.new(item,nil,nil)
+      if @tail != nil
+         @tail.anterior = nodo
+      end
+      nodo.siguiente = @tail
       @tail = nodo
+      if @head == nil
+         @head = nodo
+      end
    end
 end
