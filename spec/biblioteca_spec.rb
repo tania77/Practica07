@@ -66,7 +66,7 @@ describe Biblioteca do
             #expect(@r1.value).to eq(@r1)
         end
         
-        it "Se extrae el último elemento de la lista." do
+        it "Se extrae el ltimo elemento de la lista." do
             @lista.borrar_final
             expect(@lista.head.value).to eq(@r1)
         end
