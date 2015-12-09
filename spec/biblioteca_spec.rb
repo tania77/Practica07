@@ -1,4 +1,4 @@
-#encodign: utf-8
+
 require 'spec_helper'
 
 describe Biblioteca do
