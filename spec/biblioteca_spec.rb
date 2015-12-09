@@ -1,6 +1,5 @@
 #encodign: utf-8
 require 'spec_helper'
-#require 'biblioteca'
 
 describe Biblioteca do
     it "debe existir una version" do
