@@ -1,5 +1,6 @@
 Nodo = Struct.new(:value, :siguiente, :anterior)
 class Lista
+   include Enumerable
    attr_accessor :head, :value, :siguiente, :tail, :anterior
    
    def initialize
@@ -9,7 +10,8 @@ class Lista
    
    def each
       while(@head != @tail)
-         yield
+         @head = @head.anterior
+         yield @head
       end
    end
    

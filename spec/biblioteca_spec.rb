@@ -91,9 +91,18 @@ describe Biblioteca do
        end
     end
     
-    #context "#Pruebas para lista Enumerable" do 
-    #   it "Probar el first" do 
-    #       expect(@lista.first).to eq()
-    #   end 
-    #end
+    context "Pruebas para lista Enumerable" do 
+       it "Probar el first" do 
+           @lista.insert_principio(@r1)
+           expect(@lista.first).to eq(@lista.head)
+       end 
+       it "Probar all" do
+          expect(@lista.all?{|i| i.length >= 3}).to eq(true) 
+          expect(@lista.all?{|i| i.length < 1}).to eq(true)
+       end
+    end
+    
+    context "Pruebas de la clase Cita" do
+        
+    end 
 end
