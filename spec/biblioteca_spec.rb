@@ -100,7 +100,9 @@ describe Biblioteca do
        end
     end
     
-    context "Pruebas de la clase Cita" do
-        
+    context "Pruebas de la clase Apa" do
+        it "Se crea correctamente un objeto Apa" do
+            
+        end
     end 
 end

@@ -1,7 +1,7 @@
 require "biblioteca/version"
 require "biblioteca/referencia"
 require "biblioteca/lista"
-require "biblioteca/cita"
+require "biblioteca/apa"
 
 module Biblioteca
   # Your code goes here...
