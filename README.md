@@ -39,4 +39,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-!https://coveralls.io/repos/tania77/Practica07/badge.svg?branch=master&service=github(Coverage Status)!:https://coveralls.io/github/tania77/Practica07?branch=master
+[![Coverage Status](https://coveralls.io/repos/tania77/Practica07/badge.svg?branch=master&service=github)](https://coveralls.io/github/tania77/Practica07?branch=master)
