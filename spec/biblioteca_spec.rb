@@ -11,6 +11,8 @@ describe Biblioteca do
        @r1 = Libro.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers Guide", "July 7, 2013", "Pragmatic Bookshelf", "4 edition", "The Facets of Ruby",["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
        @r2 = Revista.new(["Scott Chacon"], "Pro Git 2009th Edition", "August 27, 2009", ["ISSN-13: 978-1430218333", "ISSN-10: 1430218339"])
        @r3 = Electronico.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "February 4, 2008", "http://0596516177IS978_0596516178") 
+       
+       @a1 = Apa.new()
 
     end
     context Libro do
@@ -33,6 +35,10 @@ describe Biblioteca do
         end
         it "Numero isbn" do
             expect(@r1.isbn).to eq(["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
+        end
+        
+        it "Pruebas del to_s" do 
+            @r1.to_s
         end
     end
     
@@ -102,6 +108,9 @@ describe Biblioteca do
     
     context "Pruebas de la clase Apa" do
         it "Se crea correctamente un objeto Apa" do
+            expect(@a1.instance_of?Apa).to eq(true)
+        end
+        it "" do 
             
         end
     end 

@@ -15,6 +15,13 @@ class Referencia
 	def <=> (other)
 	   @fecha <=> other.fecha 
 	end
+	
+	def to_s
+	    autor1 = @autor.to_s
+	    autor1 = autor1.scan(/\w+/)
+	    autor1 = autor1.each {}
+	   print "Autor: ", autor1
+	end
 end
 class Libro < Referencia
     
